@@ -1,9 +1,9 @@
-import Header from "@/components/layout/Header/Header";
+import Hero from "@/components/pages/home/hero/Hero";
 
 export default function Home() {
   return (
     <div>
-      <Header />
+      <Hero />
     </div>
   );
 }

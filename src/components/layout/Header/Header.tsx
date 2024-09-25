@@ -6,26 +6,26 @@ import { ModeToggle } from "./ModeToggle";
 
 export default function Header() {
   return (
-    <header className="border-b container border-muted-foreground">
-      <div className=" mx-auto flex justify-between items-center px-4 md:px-10 py-4">
+    <header className="container mx-auto border-b border-muted-foreground">
+      <div className="flex items-center justify-between px-4 py-4 md:px-10">
         {/* Logo */}
         <div className="text-2xl font-extrabold">Mohon</div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-          <Link href="/" className="hover:text-primary transition-colors">
+        <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
+          <Link href="/" className="transition-colors hover:text-primary">
             Services
           </Link>
-          <Link href="/" className="hover:text-primary transition-colors">
+          <Link href="/" className="transition-colors hover:text-primary">
             Design
           </Link>
-          <Link href="/" className="hover:text-primary transition-colors">
+          <Link href="/" className="transition-colors hover:text-primary">
             Blood Bank
           </Link>
-          <Link href="/" className="hover:text-primary transition-colors">
+          <Link href="/" className="transition-colors hover:text-primary">
             Best Computer T.C.
           </Link>
-          <Link href="/" className="hover:text-primary transition-colors">
+          <Link href="/" className="transition-colors hover:text-primary">
             Login
           </Link>
         </nav>
@@ -37,10 +37,10 @@ export default function Header() {
         </div>
 
         {/* Call to Action & Social Media for Desktop */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden items-center gap-8 md:flex">
           {/* Call to Action Button */}
           <Link href="/">
-            <Button className="px-6 py-1.5 h-full text-sm font-semibold">
+            <Button className="h-full px-6 py-1.5 text-sm font-semibold">
               Apply Now
             </Button>
           </Link>
@@ -56,7 +56,7 @@ export default function Header() {
             >
               <FaSquareFacebook
                 size={20}
-                className="hover:text-primary transition-colors"
+                className="transition-colors hover:text-primary"
               />
             </Link>
             <Link
@@ -68,7 +68,7 @@ export default function Header() {
             >
               <FaSquareXTwitter
                 size={20}
-                className="hover:text-primary transition-colors"
+                className="transition-colors hover:text-primary"
               />
             </Link>
             <ModeToggle />
