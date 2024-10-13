@@ -93,24 +93,22 @@ export default function Services() {
   };
 
   return (
-    <div className="container mx-auto">
-      <motion.div
-        className="px-4 md:px-10"
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-      >
-        <div className="flex flex-col items-center justify-center">
-          <p className="my-4 text-center text-4xl font-bold lg:text-5xl">
-            Services & Our Course
-          </p>
-        </div>
-        <div className="my-10 grid grid-cols-1 gap-10 md:my-16 md:grid-cols-2 lg:grid-cols-3">
-          {ServicesData.map((feature) => (
-            <FeatureModel key={feature.id} data={feature} />
-          ))}
-        </div>
-      </motion.div>
-    </div>
+    <motion.div
+      className="px-4 md:px-10"
+      variants={staggerContainer}
+      initial="hidden"
+      animate="visible"
+    >
+      <div className="flex flex-col items-center justify-center">
+        <p className="my-4 text-center text-4xl font-bold lg:text-5xl">
+          Services & Our Course
+        </p>
+      </div>
+      <div className="my-10 grid grid-cols-1 gap-10 md:my-16 md:grid-cols-2 lg:grid-cols-3">
+        {ServicesData.map((feature) => (
+          <FeatureModel key={feature.id} data={feature} />
+        ))}
+      </div>
+    </motion.div>
   );
 }

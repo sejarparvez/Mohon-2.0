@@ -1,13 +1,37 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { FaSquareFacebook, FaSquareXTwitter } from "react-icons/fa6";
 import MobileMenu from "./MobileMenu";
 import { ModeToggle } from "./ModeToggle";
 
 export default function Header() {
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const isVisible =
+        currentScrollPos < 200 || prevScrollPos > currentScrollPos;
+
+      setPrevScrollPos(currentScrollPos);
+      setVisible(isVisible);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
   return (
-    <header className="border-b border-muted-foreground">
-      <div className="flex items-center justify-between px-4 py-4 md:px-10">
+    <header
+      className={`fixed top-0 z-50 flex h-14 w-full items-center transition-transform duration-500 ease-in-out ${
+        visible ? "translate-y-0 backdrop-blur-md" : "-translate-y-20"
+      } `}
+    >
+      <div className="flex w-full items-center justify-between px-4 py-4 md:px-10">
         {/* Logo */}
         <div className="text-2xl font-extrabold">Mohon</div>
 

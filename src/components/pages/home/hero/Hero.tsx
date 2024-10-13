@@ -40,7 +40,7 @@ export default function Hero() {
       {!isLoading && (
         <>
           <Header />
-          <div className="mx-auto mb-10 md:mb-16 md:mt-10">
+          <div className="mx-auto mb-10 md:mb-16 md:mt-20">
             <section className="grid grid-cols-1 items-center gap-10 px-4 py-4 md:grid-cols-2 md:px-10">
               {/* Text Section */}
               <motion.article
