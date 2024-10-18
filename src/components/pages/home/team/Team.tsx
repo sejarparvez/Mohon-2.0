@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Carousel,
   CarouselContent,
@@ -5,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import { TeamData } from "./TeamDate";
 
@@ -18,10 +21,15 @@ export default function Team() {
         opts={{
           align: "start",
         }}
+        plugins={[
+          Autoplay({
+            delay: 3000,
+          }),
+        ]}
       >
         <CarouselContent>
           {TeamData.map((slider) => (
-            <CarouselItem key={slider.id} className="md:basis-1/2 lg:basis-1/5">
+            <CarouselItem key={slider.id} className="md:basis-1/2 lg:basis-1/4">
               {/* Fixed height card */}
               <div className="white-bg dark:dark-bg flex min-h-[17.5rem] flex-col items-center justify-center gap-6 rounded-md px-2 py-5">
                 <Image

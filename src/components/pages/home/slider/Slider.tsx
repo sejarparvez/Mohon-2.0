@@ -62,7 +62,7 @@ const sliderData = [
 
 export function Slider() {
   return (
-    <div className="mx-16">
+    <div className="mx-16 my-20">
       <Carousel
         opts={{
           align: "start",
