@@ -17,38 +17,38 @@ export default function MobileMenu() {
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="w-3/4 p-6">
-        <nav className="flex flex-col gap-6 text-lg mt-8">
+        <nav className="mt-8 flex flex-col gap-6 text-lg">
           <Link
-            href="/"
-            className="hover:text-primary transition-colors"
+            href="/about"
+            className="transition-colors hover:text-primary"
             onClick={() => setOpen(false)}
           >
-            Services
+            About Me
           </Link>
           <Link
             href="/"
-            className="hover:text-primary transition-colors"
+            className="transition-colors hover:text-primary"
             onClick={() => setOpen(false)}
           >
             Design
           </Link>
           <Link
             href="/"
-            className="hover:text-primary transition-colors"
+            className="transition-colors hover:text-primary"
             onClick={() => setOpen(false)}
           >
             Blood Bank
           </Link>
           <Link
             href="/"
-            className="hover:text-primary transition-colors"
+            className="transition-colors hover:text-primary"
             onClick={() => setOpen(false)}
           >
             Best Computer T.C.
           </Link>
           <Link
             href="/"
-            className="hover:text-primary transition-colors"
+            className="transition-colors hover:text-primary"
             onClick={() => setOpen(false)}
           >
             Login
@@ -56,7 +56,7 @@ export default function MobileMenu() {
         </nav>
 
         {/* Mode Toggle and Social Icons */}
-        <div className="flex justify-between items-center mt-10">
+        <div className="mt-10 flex items-center justify-between">
           {/* Social Icons */}
           <div className="flex gap-4">
             <Link
@@ -67,7 +67,7 @@ export default function MobileMenu() {
             >
               <FaSquareFacebook
                 size={20}
-                className="hover:text-primary transition-colors"
+                className="transition-colors hover:text-primary"
               />
             </Link>
             <Link
@@ -78,7 +78,7 @@ export default function MobileMenu() {
             >
               <FaSquareXTwitter
                 size={20}
-                className="hover:text-primary transition-colors"
+                className="transition-colors hover:text-primary"
               />
             </Link>
           </div>

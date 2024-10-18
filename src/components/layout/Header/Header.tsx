@@ -33,12 +33,14 @@ export default function Header() {
     >
       <div className="flex w-full items-center justify-between px-4 py-4 md:px-10">
         {/* Logo */}
-        <div className="text-2xl font-extrabold">Mohon</div>
+        <Link href="/" className="text-2xl font-extrabold">
+          Mohon
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
-          <Link href="/" className="transition-colors hover:text-primary">
-            Services
+          <Link href="/about" className="transition-colors hover:text-primary">
+            About Me
           </Link>
           <Link href="/" className="transition-colors hover:text-primary">
             Design

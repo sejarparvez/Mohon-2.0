@@ -75,7 +75,6 @@ export default function Contact() {
             { label: "Your Name", type: "text", id: "name" },
             { label: "Phone Number", type: "text", id: "phone" },
             { label: "Email", type: "email", id: "email" },
-            { label: "Subject", type: "text", id: "subject" },
           ].map(({ label, type, id }) => (
             <div className="mb-4" key={id}>
               <label
