@@ -29,7 +29,7 @@ export default function Team() {
       >
         <CarouselContent>
           {TeamData.map((slider) => (
-            <CarouselItem key={slider.id} className="md:basis-1/2 lg:basis-1/4">
+            <CarouselItem key={slider.id} className="md:basis-1/4 lg:basis-1/5">
               {/* Fixed height card */}
               <div className="white-bg dark:dark-bg flex min-h-[17.5rem] flex-col items-center justify-center gap-6 rounded-md px-2 py-5">
                 <Image

@@ -116,7 +116,7 @@ export default function Hero() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.5, ease: "easeInOut" }}
-                className="relative order-1 flex justify-end md:order-2 md:mt-0"
+                className="relative order-1 flex justify-center md:order-2 md:mt-0 md:justify-end"
               >
                 <motion.div
                   className="white-bg dark:dark-bg absolute bottom-0 z-0 h-64 w-64 md:h-[27rem] md:w-[26rem]"
