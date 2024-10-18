@@ -4,6 +4,7 @@ import Hero from "@/components/pages/home/hero/Hero";
 import ImageSlider from "@/components/pages/home/image-slider/ImageSlider";
 import Notice from "@/components/pages/home/notice/Notice";
 import { Slider } from "@/components/pages/home/slider/Slider";
+import { Student } from "@/components/pages/home/student/Student";
 import Team from "@/components/pages/home/team/Team";
 import { ReactLenis } from "../lib/react-lenis";
 
@@ -20,6 +21,7 @@ export default function Home() {
         <Hero />
         <Notice />
         <Slider />
+        <Student />
         <Team />
         <Contact />
         <ImageSlider />

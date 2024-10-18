@@ -60,9 +60,12 @@ const sliderData = [
   },
 ];
 
-export function Slider() {
+export function Student() {
   return (
     <div className="mx-16 my-20">
+      <p className="mb-8 text-center text-4xl font-bold md:text-6xl">
+        My Student
+      </p>
       <Carousel
         opts={{
           align: "start",
