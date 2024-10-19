@@ -14,6 +14,7 @@ import img5 from "@/images/slider/img5.jpeg";
 import img6 from "@/images/slider/img6.jpeg";
 import img7 from "@/images/slider/img7.jpeg";
 import Image from "next/image";
+import Link from "next/link";
 
 const sliderData = [
   {
@@ -62,26 +63,33 @@ const sliderData = [
 
 export function Slider() {
   return (
-    <div className="my-20 md:mx-16">
-      <p className="mb-10 text-center text-4xl font-bold md:text-5xl">
+    <div className="my-16 px-4 md:px-10">
+      <p className="mb-10 text-center text-4xl font-bold">
         Many Assets Ready To Go
       </p>
       <Carousel
         opts={{
           align: "start",
+          loop: true,
+          dragFree: true,
         }}
-        className="mx-16"
       >
         <CarouselContent>
           {sliderData.map((slider) => (
             <CarouselItem
               key={slider.id}
-              className="relative md:basis-1/2 lg:basis-1/5"
+              className="relative md:basis-1/3 lg:basis-1/5"
             >
-              <Image src={slider.img} alt="" className="h-40 object-cover" />
-              <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-xl font-bold text-white">
-                {slider.name}
-              </p>
+              <Link href="/">
+                <Image
+                  src={slider.img}
+                  alt=""
+                  className="h-60 w-full object-cover md:h-40"
+                />
+                <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-xl font-bold text-white">
+                  {slider.name}
+                </p>
+              </Link>
             </CarouselItem>
           ))}
         </CarouselContent>

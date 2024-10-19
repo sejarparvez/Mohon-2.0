@@ -13,10 +13,8 @@ import { TeamData } from "./TeamDate";
 
 export default function Team() {
   return (
-    <div className="mx-16 my-20">
-      <p className="mb-10 text-center text-4xl font-bold md:text-6xl">
-        My Team
-      </p>
+    <div className="mx-4 my-20 md:mx-10">
+      <p className="mb-10 text-center text-4xl font-bold">My Team</p>
       <Carousel
         opts={{
           align: "start",
@@ -29,7 +27,7 @@ export default function Team() {
       >
         <CarouselContent>
           {TeamData.map((slider) => (
-            <CarouselItem key={slider.id} className="md:basis-1/4 lg:basis-1/5">
+            <CarouselItem key={slider.id} className="md:basis-1/3 lg:basis-1/5">
               {/* Fixed height card */}
               <div className="white-bg dark:dark-bg flex min-h-[17.5rem] flex-col items-center justify-center gap-6 rounded-md px-2 py-5">
                 <Image

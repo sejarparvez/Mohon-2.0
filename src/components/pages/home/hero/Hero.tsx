@@ -43,13 +43,13 @@ export default function Hero() {
         <>
           <Header />
           <div className="mx-auto mb-10 mt-12 md:mb-16 md:mt-20">
-            <section className="grid grid-cols-1 items-center gap-10 px-4 py-4 md:grid-cols-2 md:px-10">
+            <section className="grid grid-cols-1 items-center gap-10 px-4 py-4 md:px-10 lg:grid-cols-2">
               {/* Text Section */}
               <motion.article
                 initial={{ opacity: 0, x: -100 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeInOut", delay: 0.3 }}
-                className="order-2 flex flex-col justify-center md:order-1"
+                className="order-2 flex flex-col justify-center lg:order-1"
               >
                 <motion.p
                   initial={{ opacity: 0 }}
@@ -116,7 +116,7 @@ export default function Hero() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.5, ease: "easeInOut" }}
-                className="relative order-1 flex justify-center md:order-2 md:mt-0 md:justify-end"
+                className="relative order-1 flex justify-center md:mt-0 lg:order-2 lg:justify-end"
               >
                 <motion.div
                   className="white-bg dark:dark-bg absolute bottom-0 z-0 h-64 w-64 md:h-[27rem] md:w-[26rem]"

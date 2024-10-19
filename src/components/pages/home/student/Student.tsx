@@ -63,12 +63,12 @@ const sliderData = [
 
 export function Student() {
   return (
-    <div className="mx-4 my-20 md:mx-16">
+    <div className="mt-16 px-4 md:px-10">
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:gap-20">
         <div className="order-2">
           <QuickMenu />
         </div>
-        <div className="mx-10">
+        <div>
           <p className="mb-8 text-center text-4xl font-bold">My Student</p>
           <Carousel
             opts={{
@@ -84,7 +84,7 @@ export function Student() {
                   <Image
                     src={slider.img}
                     alt=""
-                    className="h-40 object-cover"
+                    className="h-60 w-full object-cover md:h-40"
                   />
                 </CarouselItem>
               ))}

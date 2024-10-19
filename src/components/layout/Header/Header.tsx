@@ -38,7 +38,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
+        <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground lg:flex">
           <Link href="/about" className="transition-colors hover:text-primary">
             About Me
           </Link>
@@ -57,13 +57,13 @@ export default function Header() {
         </nav>
 
         {/* Mobile Menu Icon for Smaller Screens */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <ModeToggle />
           <MobileMenu /> {/* Render the MobileMenu component here */}
         </div>
 
         {/* Call to Action & Social Media for Desktop */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-8 lg:flex">
           {/* Call to Action Button */}
           <Link href="/">
             <Button className="h-full px-6 py-1.5 text-sm font-semibold">

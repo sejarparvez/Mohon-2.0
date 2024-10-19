@@ -12,7 +12,7 @@ import Marquee from "react-fast-marquee";
 export default function ImageSlider() {
   return (
     <div className="my-20 space-y-6">
-      <p className="mb-10 text-center text-3xl font-bold md:text-5xl">
+      <p className="mb-10 text-center text-4xl font-bold">
         View Design & Sell Content
       </p>
       <Marquee pauseOnHover={true} speed={40}>
