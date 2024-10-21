@@ -1,173 +1,105 @@
 "use client";
-import img from "@/images/logo1.png";
-import { motion } from "framer-motion";
+
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import img from "@/images/hero/banner.jpg";
+import { ChevronDown, Search } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation"; // Import usePathname
-import { useEffect, useState } from "react";
-import { FaUpwork } from "react-icons/fa6";
-import { LuFacebook, LuInstagram } from "react-icons/lu";
-import { SiFreelancer } from "react-icons/si";
-import { SlSocialLinkedin } from "react-icons/sl";
-import { TbBrandFiverr } from "react-icons/tb";
-import AnimatedText from "./AnimatedText";
+import { useState } from "react";
 
 export default function Hero() {
-  const [isLoading, setIsLoading] = useState(true);
-  const pathname = usePathname(); // Get the current pathname
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchFilter, setSearchFilter] = useState("All");
 
-  useEffect(() => {
-    setIsLoading(true); // Set loading to true when the path changes
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Searching for:", searchQuery, "in category:", searchFilter);
+  };
 
-    const timeout = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-
-    return () => clearTimeout(timeout);
-  }, [pathname]); // Add pathname as a dependency
+  const filters = ["All", "Photos", "Videos", "Vectors", "Icons"];
 
   return (
-    <>
-      {isLoading && (
-        <div className="h-screen w-screen bg-background">
-          <motion.div
-            className="h-1.5 bg-primary"
-            initial={{ width: 0 }}
-            animate={{ width: "100%" }}
-            transition={{ duration: 0.5 }}
-          />
+    <div className="relative">
+      <Image
+        src={img}
+        alt="Hero banner image showcasing creative designs"
+        width={1920}
+        height={1080}
+        priority
+        className="h-[29.5rem] w-full object-cover brightness-50"
+      />
+      <div className="absolute inset-0 flex flex-col items-center justify-center space-y-6 bg-black bg-opacity-40 px-4 md:space-y-8 lg:space-y-10">
+        <div className="text-center">
+          <h1 className="mb-4 text-3xl font-bold text-white drop-shadow-lg sm:text-4xl md:text-5xl lg:text-6xl">
+            Create Great Designs, Faster
+          </h1>
+          <p className="text-base text-slate-200 drop-shadow sm:text-lg md:text-xl lg:text-2xl">
+            High-quality photos, videos, vectors, PSD, AI images, icons... to go
+            from ideas to outstanding designs
+          </p>
         </div>
-      )}
-      {!isLoading && (
-        <>
-          <div className="mx-auto mb-10 mt-12 md:mb-16 md:mt-20">
-            <section className="grid grid-cols-1 items-center gap-10 px-4 py-4 md:px-10 lg:grid-cols-2">
-              {/* Text Section */}
-              <motion.article
-                initial={{ opacity: 0, x: -100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: "easeInOut", delay: 0.3 }}
-                className="order-2 flex flex-col justify-center lg:order-1"
+        <form
+          onSubmit={handleSearch}
+          className="w-full max-w-xl sm:max-w-2xl md:max-w-3xl"
+        >
+          <div className="flex overflow-hidden rounded-full bg-white">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="h-10 px-4 text-gray-700 hover:bg-gray-100 focus:ring-0 sm:h-12"
+                >
+                  {searchFilter} <ChevronDown className="ml-2 h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                {filters.map((filter) => (
+                  <DropdownMenuItem
+                    key={filter}
+                    onSelect={() => setSearchFilter(filter)}
+                  >
+                    {filter}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <div className="relative flex-grow">
+              <input
+                type="text"
+                placeholder="Search for images, videos, vectors..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="h-10 w-full pl-4 pr-12 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-0 sm:h-12"
+              />
+              <Button
+                type="submit"
+                size="icon"
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full focus:ring-0"
               >
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  className="text-sm text-muted-foreground md:text-lg"
-                >
-                  Welcome to my world
-                </motion.p>
-                <motion.p
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.7 }}
-                  className="mt-3 text-3xl font-bold md:mt-5 md:text-5xl"
-                >
-                  I’m <span className="uppercase text-primary">md mohon</span>
-                </motion.p>
-                <AnimatedText />
-                <motion.p
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 1 }}
-                  className="mt-6 text-sm text-muted-foreground md:mt-10 md:text-lg"
-                >
-                  I&#39;m a certified graphic designer, working with multiple
-                  companies, and providing top-quality design services at
-                  competitive prices. My expertise covers various graphic design
-                  tasks, including brand identity, packaging, photo editing, and
-                  more. If you have design projects, don&#39;t hesitate to
-                  contact me, and we can discuss your needs.
-                </motion.p>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 1.2 }}
-                  className="mt-5 space-y-3 md:space-y-5"
-                >
-                  <p className="text-muted-foreground">Connect With Me</p>
-                  <div className="flex gap-5 md:gap-10">
-                    {socialLinks.map(({ href, label, icon }) => (
-                      <motion.div
-                        key={href}
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="white-bg dark:dark-bg flex h-12 w-12 items-center justify-center rounded text-muted-foreground hover:text-primary md:h-16 md:w-16"
-                      >
-                        <Link
-                          href={href}
-                          aria-label={label}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex h-full w-full items-center justify-center"
-                        >
-                          {icon}
-                        </Link>
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-              </motion.article>
-
-              {/* Image Section */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.5, ease: "easeInOut" }}
-                className="relative order-1 flex justify-center md:mt-0 lg:order-2 lg:justify-end"
-              >
-                <motion.div
-                  className="white-bg dark:dark-bg absolute bottom-0 z-0 h-64 w-64 md:h-[27rem] md:w-[26rem]"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 1 }}
-                />
-                <Image
-                  src={img}
-                  alt="Sejar Parvez, a Full Stack Developer"
-                  className="z-10 w-60 md:w-96"
-                  priority
-                />
-              </motion.div>
-            </section>
+                <Search className="h-5 w-5 text-white" />
+                <span className="sr-only">Search</span>
+              </Button>
+            </div>
           </div>
-        </>
-      )}
-    </>
+        </form>
+        <div className="flex flex-wrap justify-center gap-2">
+          {filters.map((filter) => (
+            <Button
+              key={filter}
+              variant="ghost"
+              className="text-white hover:bg-white hover:bg-opacity-20 focus:ring-0"
+              onClick={() => setSearchFilter(filter)}
+            >
+              {filter}
+            </Button>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
-
-// Social Media Links Data
-const socialLinks = [
-  {
-    href: "https://www.facebook.com/sejarparvez",
-    label: "Facebook",
-    icon: <LuFacebook />,
-  },
-  {
-    href: "https://instagram.com/sejarparvez",
-    label: "Instagram",
-    icon: <LuInstagram />,
-  },
-
-  {
-    href: "https://linkedin.com/in/sejarparvez",
-    label: "LinkedIn",
-    icon: <SlSocialLinkedin />,
-  },
-  {
-    href: "https://linkedin.com/in/sejarparvez",
-    label: "Fiverr",
-    icon: <TbBrandFiverr />,
-  },
-  {
-    href: "https://linkedin.com/in/sejarparvez",
-    label: "Upwork",
-    icon: <FaUpwork />,
-  },
-  {
-    href: "https://linkedin.com/in/sejarparvez",
-    label: "Freelancer",
-    icon: <SiFreelancer />,
-  },
-];
