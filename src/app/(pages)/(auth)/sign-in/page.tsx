@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdOutlineDashboard } from "react-icons/md";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { z } from "zod";
 
 const FormSchema = z.object({
@@ -156,6 +156,7 @@ export default function Login() {
           </div>
         </div>
       )}
+      <ToastContainer autoClose={3000} />
     </>
   );
 }
