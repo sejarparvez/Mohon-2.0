@@ -1,4 +1,5 @@
 import Header from "@/components/layout/Header/Header";
+import Footer from "@/components/layout/footer/Footer";
 import Contact from "@/components/pages/home/contact/Contact";
 import Hero from "@/components/pages/home/hero/Hero";
 import ImageSlider from "@/components/pages/home/image-slider/ImageSlider";
@@ -24,6 +25,7 @@ export default function Home() {
         <ImageSlider />
         <Team />
         <Contact />
+        <Footer />
       </ReactLenis>
     </>
   );
