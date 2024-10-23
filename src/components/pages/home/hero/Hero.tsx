@@ -8,14 +8,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Skeleton } from "@/components/ui/skeleton";
-import img3 from "@/images/hero/2.jpg";
-import img1 from "@/images/hero/banner.jpg";
+import img1 from "@/images/hero/1.jpg";
+import img2 from "@/images/hero/2.jpg";
+import img3 from "@/images/hero/3.jpg";
 import { ChevronDown, Search } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const imageArray: StaticImageData[] = [img1, img3];
+const imageArray: StaticImageData[] = [img1, img2, img3];
 
 export default function Hero() {
   const [searchQuery, setSearchQuery] = useState("");
