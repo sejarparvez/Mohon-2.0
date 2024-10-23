@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
+import User from "./User";
 
 export default function Header({ fixed = false }: { fixed?: boolean }) {
   return (
@@ -33,14 +33,15 @@ export default function Header({ fixed = false }: { fixed?: boolean }) {
         </div>
 
         {/* Call to Action & Social Media for Desktop */}
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="hidden items-center gap-4 lg:flex">
           {/* Call to Action Button */}
-          <Link href="/">
-            <Button variant="link">Pricing</Button>
+          <Link
+            href="/"
+            className={`space-x-2 ${fixed ? "text-white" : "text-black"}`}
+          >
+            Pricing
           </Link>
-          <Link href="/sign-in">
-            <Button variant="outline">Sign In</Button>
-          </Link>
+          <User />
         </div>
       </div>
     </header>
