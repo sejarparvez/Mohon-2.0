@@ -62,26 +62,13 @@ export const NewProductFormSchema = z.object({
     .trim()
     .regex(
       /^[a-zA-Z0-9\s]+$/,
-      "Name should not contain special characters like - _ +"
+      "Name should not contain special characters like - _ +",
     ),
-  description: z
-    .string()
-    .min(10, "Description must contain at least 10 character")
-    .max(4000)
-    .trim(),
+  description: z.string().trim(),
   status: z.string().min(1, "Status is required").max(100),
   category: z.string().min(1, "Required"),
   subcategory: z.string().min(1, "Required"),
-  brand: z.string().min(1, "Required").trim(),
-  price: z.number(),
-  discountPrice: z.number().optional(),
-  discountPercent: z.number().optional(),
-  stock: z.number(),
-  size: z.coerce.number().optional(),
-  additionalCategory: z.string().optional(),
-  color: z.string().optional(),
-  material: z.string().optional(),
-  weight: z.coerce.number().optional(),
+  tags: z.array(z.string()),
 });
 
 export type NewProductFormSchemaType = z.infer<typeof NewProductFormSchema>;

@@ -11,11 +11,11 @@ export type ProductSubcategory = {
 
 export const productCategories: ProductCategory[] = [
   {
-    value: "clothing",
-    label: "Clothing",
+    value: "nature",
+    label: "Nature",
     subcategories: [
-      { value: "t-shirt", label: "T-Shirt" },
-      { value: "jeans", label: "Jeans" },
+      { value: "animal", label: "Animal" },
+      { value: "portraits-in-nature", label: "Portraits in Nature" },
       { value: "sunglass", label: "Sunglass" },
       { value: "dress", label: "Dress" },
       { value: "shoes", label: "Shoes" },

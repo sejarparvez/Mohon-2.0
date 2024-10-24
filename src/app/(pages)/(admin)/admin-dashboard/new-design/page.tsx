@@ -1,14 +1,11 @@
 "use client";
 
 import {
-  AdditionalCategory,
-  AdditionalInfo,
   NewProductName,
-  ProductCategory,
+  ProductCategoryAndTags,
   ProductImage,
-  ProductPrice,
   ProductStatus,
-} from "@/components/form/formField/NewProductFormField";
+} from "@/components/form/formField/NewDesignFormField";
 import {
   NewProductFormSchema,
   NewProductFormSchemaType,
@@ -21,10 +18,10 @@ import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function NewDesign() {
-  const [images, setImages] = useState<File[]>([]);
+  const [image, setImage] = useState<File | null>(null);
   const [warning, setWarning] = useState<string>("");
 
   const form = useForm<NewProductFormSchemaType>({
@@ -35,20 +32,13 @@ export default function NewDesign() {
       status: "",
       category: "",
       subcategory: "",
-      brand: "",
-      price: undefined,
-      discountPrice: undefined,
-      discountPercent: undefined,
-      additionalCategory: "",
-      size: undefined,
-      color: "",
-      material: "",
+      tags: [""],
     },
   });
 
   async function onSubmit(data: NewProductFormSchemaType) {
-    if (images.length === 0) {
-      setWarning("Please upload at least one image.");
+    if (!image) {
+      setWarning("Please upload an image.");
       return;
     }
 
@@ -59,30 +49,24 @@ export default function NewDesign() {
       }
     });
 
-    images.forEach((image, index) => {
-      formData.append(`images[${index}]`, image);
-    });
+    formData.append("image", image);
 
     toast.loading("Please wait...");
     try {
-      const response = await axios.post(
-        "/api/products/single-product",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+      const response = await axios.post("/api/design/single-design", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
         },
-      );
+      });
 
       if (response.status !== 200) {
-        toast.error("Failed to create product");
+        toast.error("Failed to create design");
         setWarning("Failed to submit the form");
       } else {
         toast.dismiss();
-        toast.success("Product successfully added");
+        toast.success("Design successfully added");
         form.reset();
-        setImages([]);
+        setImage(null);
         setWarning("");
       }
     } catch (error) {
@@ -112,40 +96,37 @@ export default function NewDesign() {
                     </Button>
                   </Link>
                   <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
-                    Add Product
+                    New Design
                   </h1>
                   <div className="hidden items-center gap-2 md:ml-auto md:flex">
                     <Button
                       variant="outline"
-                      size="sm"
+                      type="button"
                       onClick={() => {
                         form.reset();
-                        setImages([]);
+                        setImage(null);
                         setWarning("");
                       }}
                     >
                       Discard
                     </Button>
                     <Button size="sm" type="submit">
-                      Save Product
+                      Save Design
                     </Button>
                   </div>
                 </div>
                 <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
                   <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
                     <NewProductName />
-                    <ProductPrice />
-                    <ProductCategory />
-                    <AdditionalCategory />
+                    <ProductCategoryAndTags />
                   </div>
                   <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
                     <ProductStatus />
                     <ProductImage
-                      images={images}
-                      setImages={setImages}
+                      image={image}
+                      setImage={setImage}
                       error={warning}
                     />
-                    <AdditionalInfo />
                   </div>
                 </div>
               </div>
@@ -157,19 +138,20 @@ export default function NewDesign() {
                 size="sm"
                 onClick={() => {
                   form.reset();
-                  setImages([]);
+                  setImage(null);
                   setWarning("");
                 }}
               >
                 Discard
               </Button>
               <Button size="sm" type="submit">
-                Save Product
+                Save Design
               </Button>
             </div>
           </div>
         </div>
       </form>
+      <ToastContainer autoClose={3000} />
     </Form>
   );
 }

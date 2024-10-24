@@ -13,7 +13,7 @@ enum UserStatus {
   SUBSCRIBER
 }
 
-enum ProductStatus {
+enum DesignStatus {
   DRAFT
   PUBLISHED
   ARCHIVED
@@ -64,8 +64,7 @@ model User {
   accounts         Account[]
   sessions         Session[]
   posts            Post[]
-  products         Product[]
-  cart             Cart[]
+  design           Design[]
   comments         Comment[]
 }
 
@@ -101,40 +100,20 @@ model Comment {
   post      Post     @relation(fields: [postId], references: [id])
 }
 
-model Product {
-  id                 String        @id @default(auto()) @map("_id") @db.ObjectId
-  name               String
-  description        String
-  category           String
-  subcategory        String
-  brand              String
-  additionalCategory String?
-  color              String?
-  material           String?
-  weight             Float?
-  size               Float?
-  price              Float
-  discountPrice      Float?
-  discountPercent    Float?
-  stock              Int
-  images             String[]
-  createdAt          DateTime      @default(now())
-  updatedAt          DateTime      @updatedAt
-  status             ProductStatus @default(DRAFT)
-  authorId           String        @db.ObjectId
-  author             User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  carts              Cart[]
+model Design {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  category    String
+  subcategory String
+  image       String
+  tags        String[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  status      DesignStatus @default(DRAFT)
+  authorId    String        @db.ObjectId
+  author      User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
 
   @@index([category])
   @@index([subcategory])
-  @@index([brand])
-}
-
-model Cart {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  productId String   @db.ObjectId
-  userId    String   @db.ObjectId
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
-  quantity  Int
 }
