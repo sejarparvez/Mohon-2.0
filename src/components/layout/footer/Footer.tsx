@@ -36,7 +36,7 @@ export default function Footer() {
     <div className="mx-2 mt-20 flex flex-col items-center justify-center gap-10 py-10 md:mx-10">
       <hr className="h-1 w-full bg-zinc-900" />
       <h1 className="text-primary-100 text-center text-4xl font-bold md:text-6xl">
-        MD. MOHON
+        MHN Graphics
       </h1>
       <div className="flex gap-5 md:gap-20">
         {socialLinks.map(({ href, label, icon }) => (

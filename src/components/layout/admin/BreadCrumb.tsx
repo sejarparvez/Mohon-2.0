@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,9 +10,11 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { usePathname } from "next/navigation";
+import React from "react";
 
 export default function BreadCrumb() {
   const pathname = usePathname();
+  // Split the pathname into an array of parts, removing empty strings
   const pathArray = pathname.split("/").filter((path) => path);
 
   return (
@@ -25,26 +28,26 @@ export default function BreadCrumb() {
             <BreadcrumbItem>
               <BreadcrumbLink href="/">Home</BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator />
 
             {pathArray.map((path, index) => {
+              // Create the href for each breadcrumb
               const href = `/${pathArray.slice(0, index + 1).join("/")}`;
+              // Check if this is the last breadcrumb in the list
               const isLast = index === pathArray.length - 1;
 
               return (
-                <BreadcrumbItem key={index}>
-                  {/* Add separator after home */}
-                  {index > 0 && <BreadcrumbSeparator />}
-
-                  {/* If it's the last breadcrumb, render as plain text */}
-                  {!isLast ? (
-                    <BreadcrumbLink href={href}>
-                      {decodeURIComponent(path.replace("-", " "))}
-                    </BreadcrumbLink>
-                  ) : (
-                    <span>{decodeURIComponent(path.replace("-", " "))}</span>
-                  )}
-                </BreadcrumbItem>
+                <React.Fragment key={index}>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    {!isLast ? (
+                      <BreadcrumbLink href={href}>
+                        {decodeURIComponent(path).replace("-", " ")}
+                      </BreadcrumbLink>
+                    ) : (
+                      <span>{decodeURIComponent(path).replace("-", " ")}</span>
+                    )}
+                  </BreadcrumbItem>
+                </React.Fragment>
               );
             })}
           </BreadcrumbList>

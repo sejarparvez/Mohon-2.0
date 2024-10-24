@@ -4,10 +4,10 @@ import {
   BookOpen,
   Bot,
   Frame,
+  GalleryHorizontal,
   Map,
   PieChart,
   Settings2,
-  SquareTerminal,
 } from "lucide-react";
 import * as React from "react";
 
@@ -27,21 +27,17 @@ import {
 const data = {
   navMain: [
     {
-      title: "Playground",
+      title: "Design",
       url: "#",
-      icon: SquareTerminal,
+      icon: GalleryHorizontal,
       isActive: true,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: "Add New",
+          url: "admin-dashboard/new-design",
         },
         {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
+          title: "View All",
           url: "#",
         },
       ],

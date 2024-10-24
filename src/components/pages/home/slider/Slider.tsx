@@ -81,11 +81,13 @@ export function Slider() {
               className="relative md:basis-1/3 lg:basis-1/5"
             >
               <Link href="/">
-                <Image
-                  src={slider.img}
-                  alt=""
-                  className="h-60 w-full object-cover md:h-40"
-                />
+                <div className="flex h-60 w-full items-center justify-center md:h-40">
+                  <Image
+                    src={slider.img}
+                    alt=""
+                    className="h-60 w-full object-cover transition-all duration-300 hover:h-44 md:h-40"
+                  />
+                </div>
                 <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-xl font-bold text-white">
                   {slider.name}
                 </p>
